@@ -1,0 +1,9 @@
+namespace BabylonGameEngine.Models
+{
+    public class Settings
+    {
+        public int Id { get; set; }
+        public int Volume { get; set; }
+        public int Brightness { get; set; }
+    }
+}
