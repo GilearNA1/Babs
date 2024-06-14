@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI
 
 on:
   push:
@@ -13,19 +13,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '8.0.x'
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
 
-    - name: Restore dependencies
-      run: dotnet restore ./scripts/BabylonGameEngine/BabylonGameEngine.sln
+      - name: Restore dependencies
+        run: dotnet restore
 
-    - name: Build
-      run: dotnet build --configuration Release ./scripts/BabylonGameEngine/BabylonGameEngine.sln
+      - name: Build the project
+        run: dotnet build --no-restore
 
-    - name: Run tests
-      run: dotnet test --configuration Release --no-build --verbosity normal ./scripts/BabylonGameEngine/BabylonGameEngine.sln
+      - name: Run tests
+        run: dotnet test --no-restore --verbosity normal
+
+      - name: Publish artifact
+        if: success()
+        uses: actions/upload-artifact@v2
+        with:
+          name: drop
+          path: |
+            **/bin/Debug/net5.0/publish/
