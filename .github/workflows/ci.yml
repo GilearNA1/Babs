@@ -2,9 +2,9 @@ name: .NET
 
 on:
   push:
-    branches: [ master ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ master ]
+    branches: [ "master" ]
 
 jobs:
   build:
@@ -15,29 +15,19 @@ jobs:
         dotnet-version: ['8.0.x']
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
 
-      # Remove or comment out the Node.js steps if not needed
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v2
-      #
-      # - name: Install Node.js dependencies
-      #   run: npm install
+    - name: Restore dependencies
+      run: dotnet restore ./BabylonGameEngine.sln
 
-      - name: Print .NET version
-        run: dotnet --version
+    - name: Build
+      run: dotnet build --no-restore
 
-      - name: Restore dependencies
-        run: dotnet restore
-
-      - name: Build
-        run: dotnet build --no-restore
-
-      - name: Run Tests
-        run: dotnet test --no-restore --verbosity normal
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
