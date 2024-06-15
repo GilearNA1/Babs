@@ -1,9 +1,6 @@
 name: .NET
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
   build:
@@ -14,7 +11,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v2
       with:
         dotnet-version: '8.0.x'
 
@@ -25,7 +22,7 @@ jobs:
       run: dotnet restore ./BabylonGameEngine.sln
 
     - name: Build
-      run: dotnet build --no-restore ./BabylonGameEngine.sln
+      run: dotnet build ./BabylonGameEngine.sln --configuration Release
 
     - name: Test
-      run: dotnet test --no-restore ./BabylonGameEngine.sln
+      run: dotnet test ./BabylonGameEngine.sln --no-build --verbosity normal
