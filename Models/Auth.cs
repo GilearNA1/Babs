@@ -1,8 +1,9 @@
-namespace BabylonGameEngine.Models
+public class Auth
 {
-    public class Auth
+    public string Token { get; set; }
+
+    public Auth()
     {
-        public int Id { get; set; }
-        public string Token { get; set; }
+        Token = string.Empty;
     }
 }

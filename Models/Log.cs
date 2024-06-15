@@ -1,8 +1,9 @@
-namespace BabylonGameEngine.Models
+public class Log
 {
-    public class Log
+    public string Message { get; set; }
+
+    public Log()
     {
-        public int Id { get; set; }
-        public string Message { get; set; }
+        Message = string.Empty;
     }
 }
