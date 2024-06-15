@@ -25,16 +25,16 @@ jobs:
 
     - name: Install Node.js dependencies
       run: npm install
-      working-directory: ./scripts
+      working-directory: ./
 
     - name: Print .NET version
       run: dotnet --version
 
     - name: Restore dependencies
-      run: dotnet restore ./scripts/BabylonGameEngine/BabylonGameEngine.sln
+      run: dotnet restore ./BabylonGameEngine.sln
 
     - name: Build
-      run: dotnet build --no-restore ./scripts/BabylonGameEngine/BabylonGameEngine.sln
+      run: dotnet build --no-restore ./BabylonGameEngine.sln
 
     - name: Test
-      run: dotnet test --no-restore ./scripts/BabylonGameEngine/BabylonGameEngine.sln
+      run: dotnet test --no-restore ./BabylonGameEngine.sln
