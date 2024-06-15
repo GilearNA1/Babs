@@ -25,7 +25,7 @@ jobs:
 
     - name: Install Node.js dependencies
       run: npm install
-      working-directory: ./scripts/BabylonGameEngine
+      working-directory: ./scripts
 
     - name: Print .NET version
       run: dotnet --version
