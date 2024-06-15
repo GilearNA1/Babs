@@ -1,10 +1,6 @@
 name: .NET
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -27,7 +23,7 @@ jobs:
       run: dotnet restore ./BabylonGameEngine.sln
 
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore --verbosity normal
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-restore --verbosity normal
