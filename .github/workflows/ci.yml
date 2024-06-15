@@ -2,9 +2,11 @@ name: .NET
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
 
 jobs:
   build:
@@ -15,24 +17,24 @@ jobs:
         dotnet-version: ['8.0.x']
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Setup Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
 
-    - name: Install Dependencies
-      run: dotnet restore
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-    - name: Build
-      run: dotnet build --no-restore
+      - name: Install Node.js dependencies
+        run: npm install
 
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      - name: Build
+        run: dotnet build --no-restore
+
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
