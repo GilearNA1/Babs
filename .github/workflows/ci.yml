@@ -1,14 +1,17 @@
 name: .NET
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        dotnet-version: ['8.0.x']
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
@@ -17,13 +20,13 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: ${{ matrix.dotnet-version }}
+        dotnet-version: '6.0.x'
 
     - name: Restore dependencies
       run: dotnet restore ./BabylonGameEngine.sln
 
     - name: Build
-      run: dotnet build --no-restore --verbosity normal
+      run: dotnet build ./BabylonGameEngine.sln --configuration Release --no-restore
 
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test ./BabylonGameEngine.sln --no-restore --verbosity normal
