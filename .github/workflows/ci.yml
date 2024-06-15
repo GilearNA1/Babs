@@ -39,10 +39,11 @@ jobs:
       - name: Print .NET version
         run: dotnet --version
 
+      - name: Restore dependencies
+        run: dotnet restore
+
       - name: Build
         run: dotnet build --no-restore --verbosity detailed
-        continue-on-error: true
 
-      - name: Test
+      - name: Run Tests
         run: dotnet test --no-build --verbosity detailed
-        continue-on-error: true
