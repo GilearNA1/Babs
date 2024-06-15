@@ -4,7 +4,7 @@ VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BabylonGameEngine", "BabylonGameEngine.csproj", "{067D7062-6EC3-4AD9-BE8D-BF9C35164E0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BabylonGameEngine.Tests", "BabylonGameEngine.Tests\BabylonGameEngine.Tests.csproj", "{0F226EBE-B87A-4040-8572-C0FA00E6159D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BabylonGameEngine.Tests", "Tests/BabylonGameEngine.Tests.csproj", "{0F226EBE-B87A-4040-8572-C0FA00E6159D}"
 EndProject
 Global
     GlobalSection(SolutionConfigurationPlatforms) = preSolution
