@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BabylonGameEngine
 {
@@ -8,8 +7,7 @@ namespace BabylonGameEngine
     {
         public static void Main(string[] args)
         {
-            netstat - ano | findstr :5299
-CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
