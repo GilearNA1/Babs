@@ -1,8 +1,6 @@
-namespace BabylonGameEngine.Models
+public class World
 {
-    public class World
-    {
-        public string Name { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-    }
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty; // Initialize with a default value
+    public string Description { get; set; } = string.Empty; // Initialize with a default value
 }
